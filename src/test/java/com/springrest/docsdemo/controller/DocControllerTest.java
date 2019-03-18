@@ -3,7 +3,6 @@ package com.springrest.docsdemo.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springrest.docsdemo.doc.User;
 import org.junit.FixMethodOrder;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.JUnitRestDocumentation;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -49,9 +47,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DocControllerTest {
-
-    @Rule
-    private JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
 
     @Autowired
     private MockMvc mockMvc;

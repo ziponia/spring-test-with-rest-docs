@@ -4,50 +4,120 @@ https://github.com/ziponia/spring-test-with-rest-docs
 :icons: font
 :source-highlighter: highlightjs
 :toc: left
+:toctitle: Api 문서 타이틀
 :toclevels: 4
 :sectlinks:
-:operation-curl-request-title: Example request
-:operation-http-response-title: Example response
+:operation-curl-request-title: 요청 예시
+:operation-response-body-title: 응답 본문 예시
+:operation-request-body-title: 요청 본문 예시
+:operation-request-parameters-title: 요청 필드
+:operation-response-fields-title: 응답 필드
+
+[[overview]]
+= Overview
+
+[[overview-http-verbs]]
+== HTTP verbs
+
+Grails RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP verbs.
+
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve a resource
+
+| `POST`
+| Used to create a new resource
+
+| `PUT`
+| Used to update an existing resource, including partial updates
+
+| `DELETE`
+| Used to delete an existing resource
+|===
+
+[[overview-http-status-codes]]
+== HTTP status codes
+
+Grails RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP status codes.
+
+|===
+| Status code | Usage
+
+| `200 OK`
+| The request completed successfully
+
+| `201 Created`
+| A new resource has been created successfully. The resource's URI is available from the response's
+`Location` header
+
+| `204 No Content`
+| An update to an existing resource has been applied successfully
+
+| `400 Bad Request`
+| The request was malformed. The response body will include an error providing further information
+
+| `404 Not Found`
+| The requested resource did not exist
+|===
+
 
 [[introduction]]
 == 소개 부분
 
 이곳에 소개부분이 들어갑니다.
 
-== Member 조회
-include::{snippets}/get-user/path-parameters.adoc[]
-include::{snippets}/get-user/http-response.adoc[]
-include::{snippets}/get-user/response-fields.adoc[]
-include::{snippets}/get-user/curl-request.adoc[]
-include::{snippets}/get-user/http-request.adoc[]
-include::{snippets}/get-user/httpie-request.adoc[]
-include::{snippets}/get-user/request-body.adoc[]
-include::{snippets}/get-user/response-body.adoc[]
+[[resources]]
+== Resources
 
-== Member List 조회
-include::{snippets}/get-users/http-response.adoc[]
-include::{snippets}/get-users/response-fields.adoc[]
-include::{snippets}/get-users/curl-request.adoc[]
-include::{snippets}/get-users/http-request.adoc[]
-include::{snippets}/get-users/httpie-request.adoc[]
-include::{snippets}/get-users/request-body.adoc[]
-include::{snippets}/get-users/response-body.adoc[]
+[[resources-member]]
+== Member
+Member 관련 API
 
-== Member 추가
-include::{snippets}/save-user/http-response.adoc[]
-include::{snippets}/save-user/response-fields.adoc[]
-include::{snippets}/save-user/curl-request.adoc[]
-include::{snippets}/save-user/http-request.adoc[]
-include::{snippets}/save-user/httpie-request.adoc[]
-include::{snippets}/save-user/request-body.adoc[]
-include::{snippets}/save-user/response-body.adoc[]
+리소스
 
-== Member 수정
-include::{snippets}/update-user/path-parameters.adoc[]
-include::{snippets}/update-user/http-response.adoc[]
-include::{snippets}/update-user/response-fields.adoc[]
-include::{snippets}/update-user/curl-request.adoc[]
-include::{snippets}/update-user/http-request.adoc[]
-include::{snippets}/update-user/httpie-request.adoc[]
-include::{snippets}/update-user/request-body.adoc[]
-include::{snippets}/update-user/response-body.adoc[]
+=== Member 조회
+operation::get-user[snippets='http-request,curl-request,path-parameters,response-fields,response-body']
+
+//include::{snippets}/get-user/path-parameters.adoc[]
+//include::{snippets}/get-user/http-response.adoc[]
+//include::{snippets}/get-user/response-fields.adoc[]
+//include::{snippets}/get-user/curl-request.adoc[]
+//include::{snippets}/get-user/http-request.adoc[]
+//include::{snippets}/get-user/httpie-request.adoc[]
+//include::{snippets}/get-user/request-body.adoc[]
+//include::{snippets}/get-user/response-body.adoc[]
+
+=== Member List 조회
+operation::get-users[snippets='http-request,curl-request,response-fields,response-body']
+//include::{snippets}/get-users/http-response.adoc[]
+//include::{snippets}/get-users/response-fields.adoc[]
+//include::{snippets}/get-users/curl-request.adoc[]
+//include::{snippets}/get-users/http-request.adoc[]
+//include::{snippets}/get-users/httpie-request.adoc[]
+//include::{snippets}/get-users/request-body.adoc[]
+//include::{snippets}/get-users/response-body.adoc[]
+//
+=== Member 추가
+operation::save-user[snippets='http-request,curl-request,request-body,response-fields,response-body']
+//include::{snippets}/save-user/http-response.adoc[]
+//include::{snippets}/save-user/response-fields.adoc[]
+//include::{snippets}/save-user/curl-request.adoc[]
+//include::{snippets}/save-user/http-request.adoc[]
+//include::{snippets}/save-user/httpie-request.adoc[]
+//include::{snippets}/save-user/request-body.adoc[]
+//include::{snippets}/save-user/response-body.adoc[]
+//
+=== Member 수정
+operation::update-user[snippets='http-request,curl-request,request-parameters,response-fields,response-body']
+//include::{snippets}/update-user/path-parameters.adoc[]
+//include::{snippets}/update-user/http-response.adoc[]
+//include::{snippets}/update-user/response-fields.adoc[]
+//include::{snippets}/update-user/curl-request.adoc[]
+//include::{snippets}/update-user/http-request.adoc[]
+//include::{snippets}/update-user/httpie-request.adoc[]
+//include::{snippets}/update-user/request-body.adoc[]
+//include::{snippets}/update-user/response-body.adoc[]
