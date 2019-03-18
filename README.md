@@ -1,5 +1,16 @@
 # 테스트 코드와 Rest Docs 예제
 
-아직 RestDocs 를 어떻게 어플리케이션 에서 서빙 해줄것인지는 학습하지 못했다...
+```
+$ mvn package
+$ mvn spring-boot:run
+```
 
-이후에 좀 더 알아 볼 예정
+Run with
+
+http://127.0.0.1:8080/docs/index.html
+
+## 아직 안된 부분
+
+- src/main/asciidoc/index.adoc 에 :source-highlighter: highlightjs 가 먹질 않는다.
+- :operation-curl-request-title: Example request
+  :operation-http-response-title: Example response 가 적용이 안된다 

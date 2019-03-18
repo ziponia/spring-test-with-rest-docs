@@ -1,10 +1,53 @@
-= Member
+= Rest Docs 샘플 어플리케이션
+https://github.com/ziponia/spring-test-with-rest-docs
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:operation-curl-request-title: Example request
+:operation-http-response-title: Example response
+
+[[introduction]]
+== 소개 부분
+
+이곳에 소개부분이 들어갑니다.
+
 == Member 조회
-include::{snippets}/member-controller-test/get_member/path-parameters.adoc[]
-include::{snippets}/member-controller-test/get_member/http-response.adoc[]
-include::{snippets}/member-controller-test/get_member/response-fields.adoc[]
-include::{snippets}/member-controller-test/get_member/curl-request.adoc[]
-include::{snippets}/member-controller-test/get_member/http-request.adoc[]
-include::{snippets}/member-controller-test/get_member/httpie-request.adoc[]
-include::{snippets}/member-controller-test/get_member/request-body.adoc[]
-include::{snippets}/member-controller-test/get_member/response-body.adoc[]
+include::{snippets}/get-user/path-parameters.adoc[]
+include::{snippets}/get-user/http-response.adoc[]
+include::{snippets}/get-user/response-fields.adoc[]
+include::{snippets}/get-user/curl-request.adoc[]
+include::{snippets}/get-user/http-request.adoc[]
+include::{snippets}/get-user/httpie-request.adoc[]
+include::{snippets}/get-user/request-body.adoc[]
+include::{snippets}/get-user/response-body.adoc[]
+
+== Member List 조회
+include::{snippets}/get-users/http-response.adoc[]
+include::{snippets}/get-users/response-fields.adoc[]
+include::{snippets}/get-users/curl-request.adoc[]
+include::{snippets}/get-users/http-request.adoc[]
+include::{snippets}/get-users/httpie-request.adoc[]
+include::{snippets}/get-users/request-body.adoc[]
+include::{snippets}/get-users/response-body.adoc[]
+
+== Member 추가
+include::{snippets}/save-user/http-response.adoc[]
+include::{snippets}/save-user/response-fields.adoc[]
+include::{snippets}/save-user/curl-request.adoc[]
+include::{snippets}/save-user/http-request.adoc[]
+include::{snippets}/save-user/httpie-request.adoc[]
+include::{snippets}/save-user/request-body.adoc[]
+include::{snippets}/save-user/response-body.adoc[]
+
+== Member 수정
+include::{snippets}/update-user/path-parameters.adoc[]
+include::{snippets}/update-user/http-response.adoc[]
+include::{snippets}/update-user/response-fields.adoc[]
+include::{snippets}/update-user/curl-request.adoc[]
+include::{snippets}/update-user/http-request.adoc[]
+include::{snippets}/update-user/httpie-request.adoc[]
+include::{snippets}/update-user/request-body.adoc[]
+include::{snippets}/update-user/response-body.adoc[]

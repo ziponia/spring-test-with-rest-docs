@@ -3,6 +3,7 @@ package com.springrest.docsdemo.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springrest.docsdemo.doc.User;
 import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.JUnitRestDocumentation;
+import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -17,6 +20,8 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.springrest.docsdemo.ApiDocumentUtils.getDocumentRequest;
+import static com.springrest.docsdemo.ApiDocumentUtils.getDocumentResponse;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
@@ -45,10 +50,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DocControllerTest {
 
+    @Rule
+    private JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
+
     @Autowired
     private MockMvc mockMvc;
 
-    ObjectMapper objectMapper = new ObjectMapper();
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Test
     public void A_addUser() throws Exception {
@@ -58,7 +67,6 @@ public class DocControllerTest {
         Map<String, String> map = new HashMap<>();
         map.put("username", "jihoon");
         map.put("age", "30");
-        System.out.println(this.objectMapper.writeValueAsString(map));
         ResultActions result =
                 this.mockMvc.perform(
                         post("/user")
@@ -71,6 +79,8 @@ public class DocControllerTest {
         result
                 .andDo(
                         document("save-user",
+                                getDocumentRequest(),
+                                getDocumentResponse(),
                                 requestFields(
                                         fieldWithPath("username").description("any"),
                                         fieldWithPath("age").description("나이")
@@ -97,14 +107,16 @@ public class DocControllerTest {
                 .andExpect(status().is(200))
                 .andDo(
                         document("get-user",
+                                getDocumentRequest(),
+                                getDocumentResponse(),
                                 pathParameters(
                                         parameterWithName("username").description("사용자 이름")
                                 ),
                                 responseFields(
                                         fieldWithPath("idx").description("유저의 고유 아이디"),
                                         fieldWithPath("username").description("유저 이름"),
-                                        fieldWithPath("age").description("나이"),
-                                        fieldWithPath("createDate").description("생성 날짜"),
+                                        fieldWithPath("age").type(JsonFieldType.NUMBER).description("나이"),
+                                        fieldWithPath("createDate").type(JsonFieldType.STRING).description("생성 날짜"),
                                         fieldWithPath("updateDate").description("수정 날짜")
                                 )
                         )
@@ -120,6 +132,8 @@ public class DocControllerTest {
         result
                 .andDo(
                         document("get-users",
+                                getDocumentRequest(),
+                                getDocumentResponse(),
                                 responseFields(
                                         fieldWithPath("[].idx").description("유저의 고유 아이디"),
                                         fieldWithPath("[].username").description("유저 이름"),
@@ -143,6 +157,8 @@ public class DocControllerTest {
                 .andDo(
                         document(
                                 "update-user",
+                                getDocumentRequest(),
+                                getDocumentResponse(),
                                 pathParameters(
                                         parameterWithName("idx").description("변경 할 유저의 고유 ID")
                                 ),
